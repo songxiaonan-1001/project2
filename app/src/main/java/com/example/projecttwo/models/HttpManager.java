@@ -27,6 +27,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * 封装http网络请求
+ */
 public class HttpManager {
     private static volatile HttpManager instance;
 

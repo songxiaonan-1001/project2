@@ -12,8 +12,8 @@ import io.reactivex.disposables.Disposable;
  * P层的实现基类,具备以下特征:
  * 1.关联和解绑V层
  * 2.对网络请求对象进行背压式处理CompositeDisposable??
- *
- * 对第一行代码的理解(泛型):一个抽象类(abstract)BasePresenter,
+ * 对第一行代码的理解(泛型):
+ * 一个抽象类(abstract)BasePresenter,定义一个泛型继承V层基类接口,同时实现带该泛型的P层基类接口
  */
 public abstract class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
     protected V mView;

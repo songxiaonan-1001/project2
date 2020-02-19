@@ -33,12 +33,12 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         unbinder = ButterKnife.bind(this);
-        initView();
-        presenter = createPresenter();
+        initView();//初始化界面的操作
+        presenter = createPresenter();//创建p的方法
         if (presenter != null) {
             presenter.attachView(this);
         }
-        initData();
+        initData();//初始化数据
     }
 
     /**
@@ -57,6 +57,7 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
 
     /**
      * 用来显示提示信息
+     *
      * @param msg
      */
     @Override
@@ -72,9 +73,11 @@ public abstract class BaseActivity<P extends IBasePresenter> extends AppCompatAc
     protected void onDestroy() {
         super.onDestroy();
         if (presenter != null) {
+            //解绑与P层的关联
             presenter.detachView();
         }
         if (unbinder != null) {
+            //释放绑定的view
             unbinder.unbind();
         }
     }

@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">ProjectTwo</string>
+    <string name="app_name">仿网易严选</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">主页</string>
+    <string name="topic">专题</string>
+    <string name="sort">分类</string>
+    <string name="shopping">购物车</string>
+    <string name="me">我的</string>
 </resources>
