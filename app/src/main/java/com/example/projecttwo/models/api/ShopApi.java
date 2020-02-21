@@ -11,11 +11,14 @@ import retrofit2.http.Query;
 
 public interface ShopApi {
 
+    //首页
     @GET("index")
     Flowable<IndexBean> getIndexData();
+
     //品牌直供的详情页数据接口
     @GET("brand/detail")
     Flowable<BrandBean> getBrandInfo(@Query("id") String id);
+
     //品牌直供详情的商品列表数据接口
     //@GET("goods/list")
     //Flowable<BrandGoodsBean> getBrandGoods(@Query("brandId") String brandId,@Query("page") int page,@Query("size") int size);

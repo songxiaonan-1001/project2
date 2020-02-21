@@ -45,7 +45,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         T t = mDatas.get(position);
-        bingData((BaseViewHolder)holder,t);
+        bingData((BaseViewHolder) holder, t);
     }
 
     @Override
@@ -54,31 +54,31 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     }
 
     //刷新所有列表数据
-    public void updata(List<T> list){
+    public void updata(List<T> list) {
         mDatas.clear();
         mDatas.addAll(list);
         notifyDataSetChanged();
     }
 
     //分页加载数据的刷新
-    public void refreshList(List<T> list){
+    public void refreshList(List<T> list) {
         mDatas.addAll(list);
         notifyDataSetChanged();
     }
 
-    //获取布局的抽象方法
+    //获取布局的方法(abstract)
     protected abstract int getLayout();
 
     /**
-     * 绑定数据的方法
+     * 绑定数据的方法(abstract)
+     *
      * @param holder :对应的item的管理的
-     * @param t :当前item对应的数据
+     * @param t      :当前item对应的数据类型
      */
     public abstract void bingData(BaseViewHolder holder, T t);
 
     //创建基类的ViewHolder
     public static class BaseViewHolder extends RecyclerView.ViewHolder {
-
         private SparseArray items;
 
         public BaseViewHolder(@NonNull View itemView) {
@@ -87,11 +87,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         }
 
         //获取item中的元素?
-        public View getView(int id){
+        public View getView(int id) {
             View view = (View) items.get(id);
-            if (view==null){
+            if (view == null) {
                 view = itemView.findViewById(id);
-                items.append(id,view);
+                items.append(id, view);
             }
             return view;
         }

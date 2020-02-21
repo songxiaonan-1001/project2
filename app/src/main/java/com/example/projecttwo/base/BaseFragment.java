@@ -3,6 +3,7 @@ package com.example.projecttwo.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,12 +68,15 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
 
     @Override
     public void showTips(String msg) {
+        Log.i("TAG", "showTips: " + msg);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //销毁方法中解绑P层对象
         if (presenter != null) presenter.detachView();
+        //解绑视图
         if (unbinder != null) unbinder.unbind();
     }
 }

@@ -10,4 +10,8 @@
     <string name="me">我的</string>
     <string name="brand_price">xxx元起</string>
     <string name="brand_name">XXX制造商</string>
+    <string name="brand">品牌制造商直供</string>
+    <string name="newGoods">周一周四·新品首发</string>
+    <string name="hotGoods">人气推荐</string>
+    <string name="topic_choose">专题精选</string>
 </resources>

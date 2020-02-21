@@ -20,6 +20,7 @@ import com.example.projecttwo.presenter.home.HomePresenter;
 import com.example.projecttwo.ui.home.activity.BrandActivity;
 import com.example.projecttwo.ui.home.adapter.BrandAdapter;
 import com.example.projecttwo.ui.home.adapter.GlideImageLoader;
+import com.example.projecttwo.ui.home.adapter.NewGoodsListAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.youth.banner.Banner;
 
@@ -30,6 +31,7 @@ import butterknife.BindView;
 
 /**
  * A simple {@link Fragment} subclass.
+ * <HomeConstract.Presenter>作用:为了能调用到契约类中请求数据的方法,同时又是BaseFragment中P层的实现
  */
 public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implements HomeConstract.View, BaseAdapter.ItemClickHandler {
 
@@ -60,7 +62,7 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
 
     //适配器
     //private ChannelAdapter channelAdapter;
-    //private NewGoodsListAdapter newGoodsListAdapter;
+    private NewGoodsListAdapter newGoodsListAdapter;
     //private HotGoodsAdapter hotGoodsListAdapter;
     private BrandAdapter brandAdapter;
     //private TopicListAdapter topicListAdapter;
@@ -82,20 +84,30 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         list_categoryList = new ArrayList<>();//分类数据:居家,餐厨等
         //创建适配器
         brandAdapter = new BrandAdapter(list_brand, context);
+        newGoodsListAdapter = new NewGoodsListAdapter(list_newGoodsList, context);
         //创建并设置网格管理器(brand专题)
         rec_brand.setLayoutManager(new GridLayoutManager(context, 2));
+        rec_newgoods.setLayoutManager(new GridLayoutManager(context, 2));
         //设置适配器
         rec_brand.setAdapter(brandAdapter);
+        rec_newgoods.setAdapter(newGoodsListAdapter);
         brandAdapter.setItemClickHandler(new BrandAdapter.ItemClickHandler() {
             @Override
             public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
                 Toast.makeText(context, "点击了专题栏", Toast.LENGTH_SHORT).show();
             }
         });
+        newGoodsListAdapter.setItemClickHandler(new BrandAdapter.ItemClickHandler() {
+            @Override
+            public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
+                Toast.makeText(context, "点击了新品栏", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     protected void initData() {
+        //此处的presenter为BaseFragment中的P层对象
         presenter.getHomeData();
     }
 
@@ -105,7 +117,7 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
     }
 
     @Override
-    public void getHomeDataReturn(IndexBean result) {
+    public void getHomeDataReturn(IndexBean result) {//返回的数据
         //banner图片数据
         list_banner = result.getData().getBanner();
         List<String> images = new ArrayList<>();
@@ -124,7 +136,7 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         //刷新Brand列表数据
         brandAdapter.updata(result.getData().getBrandList());
         //刷新新品发布列表数据
-        //newsAdapter.updata(result.getData().getNewGoodsList());
+        newGoodsListAdapter.updata(result.getData().getNewGoodsList());
 
     }
 

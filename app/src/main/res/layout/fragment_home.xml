@@ -1,41 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorGray"
         android:orientation="vertical">
 
         <com.youth.banner.Banner
             android:id="@+id/banner_home"
             android:layout_width="match_parent"
-            android:layout_height="180dp"></com.youth.banner.Banner>
+            android:layout_height="200dp"
+            android:background="@color/colorWhite"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"></com.youth.banner.Banner>
 
         <com.google.android.material.tabs.TabLayout
-            app:tabMode="scrollable"
             android:id="@+id/tablayout_home"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></com.google.android.material.tabs.TabLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            app:tabMode="scrollable"></com.google.android.material.tabs.TabLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:text="@string/brand"
+            android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:text="@string/newGoods"
+            android:textSize="15sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_newgoods"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:text="@string/hotGoods"
+            android:textSize="15sp" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_hotgoods"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorWhite"
+            android:gravity="center"
+            android:text="@string/topic_choose"
+            android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rec_topic"

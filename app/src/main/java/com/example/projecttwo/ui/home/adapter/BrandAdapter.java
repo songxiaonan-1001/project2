@@ -12,26 +12,28 @@ import com.example.projecttwo.models.bean.IndexBean;
 
 import java.util.List;
 
+/**
+ * 品牌制造商直供的适配器
+ */
 public class BrandAdapter extends BaseAdapter {
-
     public BrandAdapter(List mDatas, Context mContext) {
         super(mDatas, mContext);
     }
 
     @Override
     protected int getLayout() {
-        return R.layout.layout_brand_item;
+        return R.layout.fragment_home_brand_item;
     }
 
     @Override
-    public void bingData(BaseViewHolder holder, Object o) {
+    public void bingData(BaseViewHolder holder, Object o) {//绑定数据
         IndexBean.DataBean.BrandListBean data = (IndexBean.DataBean.BrandListBean) o;
         ImageView img_brand = (ImageView) holder.getView(R.id.iv_home_brand);
-        TextView txt_name = (TextView)holder.getView(R.id.tv_home_brand);
-        TextView txt_price = (TextView)holder.getView(R.id.tv_home_price);
+        TextView txt_name = (TextView) holder.getView(R.id.tv_home_brand_name);
+        TextView txt_price = (TextView) holder.getView(R.id.tv_home_brand_price);
 
         Glide.with(mContext).load(data.getNew_pic_url()).into(img_brand);
         txt_name.setText(data.getName());
-        txt_price.setText(Constant.PRICE_MODEL.replace("$",data.getFloor_price()));
+        txt_price.setText(Constant.PRICE_MODEL.replace("$", data.getFloor_price()));
     }
 }

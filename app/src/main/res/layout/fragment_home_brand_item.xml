@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="540dp"
-    android:layout_height="360dp"
-    android:layout_margin="3dp"
-    android:orientation="vertical">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/iv_home_brand"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_home_brand"
+        android:id="@+id/tv_home_brand_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="5dp"
         android:text="@string/brand_name"
-        android:textSize="10sp"
+        android:textColor="@color/drawer_header_text"
+        android:textSize="15sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@id/iv_home_brand" />
 
     <TextView
-        android:id="@+id/tv_home_price"
+        android:id="@+id/tv_home_brand_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="@string/brand_price"
-        android:textSize="8sp"
+        android:textColor="@color/topic_text"
+        android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/tv_home_brand" />
+        app:layout_constraintTop_toBottomOf="@id/tv_home_brand_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

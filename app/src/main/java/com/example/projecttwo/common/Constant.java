@@ -4,6 +4,9 @@ import com.example.projecttwo.apps.MyApp;
 
 import java.io.File;
 
+/**
+ * 常量类
+ */
 public class Constant {
     public static final String BASE_WAN_URL = "https://www.wanandroid.com/"; //wanandroid基础地址
 
