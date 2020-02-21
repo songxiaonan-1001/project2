@@ -53,17 +53,17 @@ public abstract class BaseFragment<P extends IBasePresenter> extends Fragment im
         initData();
     }
 
-    //创建P层
-    protected abstract P createPresenter();
-
-    //初始化数据
-    protected abstract void initData();
+    //获取子类布局id
+    protected abstract int getLayout();
 
     //初始化界面
     protected abstract void initView();
 
-    //获取子类布局id
-    protected abstract int getLayout();
+    //初始化数据
+    protected abstract void initData();
+
+    //创建P层
+    protected abstract P createPresenter();
 
     @Override
     public void showTips(String msg) {

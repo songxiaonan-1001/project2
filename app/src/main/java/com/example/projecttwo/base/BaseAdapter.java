@@ -77,7 +77,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     public abstract void bingData(BaseViewHolder holder, T t);
 
     //创建基类的ViewHolder
-    private static class BaseViewHolder extends RecyclerView.ViewHolder {
+    public static class BaseViewHolder extends RecyclerView.ViewHolder {
 
         private SparseArray items;
 

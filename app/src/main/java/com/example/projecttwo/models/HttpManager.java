@@ -3,6 +3,7 @@ package com.example.projecttwo.models;
 import android.util.Log;
 
 import com.example.projecttwo.common.Constant;
+import com.example.projecttwo.models.api.ShopApi;
 import com.example.projecttwo.utils.SystemUtils;
 
 import java.io.File;
@@ -31,6 +32,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * 封装http网络请求
  */
 public class HttpManager {
+
+    private ShopApi shopApi;//商城的接口
+
     private static volatile HttpManager instance;
 
     public static HttpManager getInstance() {
@@ -68,6 +72,16 @@ public class HttpManager {
         return client;
     }
 
+    /**
+     * 获取商城的接口
+     *
+     * @return
+     */
+    public ShopApi getShopApi() {
+        if (shopApi == null) shopApi = getRetrofit(Constant.BASE_SHOP_URL).create(ShopApi.class);
+        return shopApi;
+    }
+
     static class HeaderInterceptor implements Interceptor {
 
         @Override
@@ -91,35 +105,36 @@ public class HttpManager {
 
             Response response = chain.proceed(request);
             long t2 = System.nanoTime();
-            Log.i("Received:",String.format("Received response for %s in %.1fms%n%s",response.request().url(),(t2-t1)/1e6d,response.headers()));
+            Log.i("Received:", String.format("Received response for %s in %.1fms%n%s", response.request().url(), (t2 - t1) / 1e6d, response.headers()));
             return response;
         }
     }
+
     /**
      * 网络拦截器封装
      */
-    static class NetworkInterceptor implements Interceptor{
+    static class NetworkInterceptor implements Interceptor {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
-            if(!SystemUtils.checkNetWork()){
+            if (!SystemUtils.checkNetWork()) {
                 request = request.newBuilder()
                         .cacheControl(CacheControl.FORCE_CACHE)
                         .build();
             }
             Response response = chain.proceed(request);
             //通过判断网络连接是否存在获取本地或者服务器的数据
-            if(!SystemUtils.checkNetWork()){
+            if (!SystemUtils.checkNetWork()) {
                 int maxAge = 0;
                 return response.newBuilder()
                         .removeHeader("Pragma")
-                        .header("Cache-Control","public ,max-age="+maxAge).build();
-            }else{
-                int maxStale = 60*60*24*28; //设置缓存数据的保存时间
+                        .header("Cache-Control", "public ,max-age=" + maxAge).build();
+            } else {
+                int maxStale = 60 * 60 * 24 * 28; //设置缓存数据的保存时间
                 return response.newBuilder()
                         .removeHeader("Pragma")
-                        .header("Cache-Control","public, onlyif-cached, max-stale="+maxStale).build();
+                        .header("Cache-Control", "public, onlyif-cached, max-stale=" + maxStale).build();
             }
         }
     }
@@ -130,16 +145,16 @@ public class HttpManager {
      */
     private static CookieJar cookieJar = new CookieJar() {
 
-        private final Map<String, List<Cookie>> cookieMap = new HashMap<String,List<Cookie>>();
+        private final Map<String, List<Cookie>> cookieMap = new HashMap<String, List<Cookie>>();
 
         @Override
         public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
             String host = url.host();
             List<Cookie> cookieList = cookieMap.get(host);
-            if(cookieList != null){
+            if (cookieList != null) {
                 cookieMap.remove(host);
             }
-            cookieMap.put(host,cookies);
+            cookieMap.put(host, cookies);
         }
 
         @Override

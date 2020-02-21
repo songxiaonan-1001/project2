@@ -8,4 +8,6 @@
     <string name="sort">分类</string>
     <string name="shopping">购物车</string>
     <string name="me">我的</string>
+    <string name="brand_price">xxx元起</string>
+    <string name="brand_name">XXX制造商</string>
 </resources>
