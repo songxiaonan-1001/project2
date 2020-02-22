@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+/**
+ * adapter适配器的基类
+ *
+ * @param <T> 数据的类型
+ */
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
 
     //成员变量
@@ -27,7 +32,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(getLayout(), null);
+        View view = LayoutInflater.from(mContext).inflate(getLayout(), parent, false);
         final BaseViewHolder holder = new BaseViewHolder(view);
         //条目点击监听
         view.setOnClickListener(new View.OnClickListener() {
@@ -69,12 +74,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
     //获取布局的方法(abstract)
     protected abstract int getLayout();
 
-    /**
-     * 绑定数据的方法(abstract)
-     *
-     * @param holder :对应的item的管理的
-     * @param t      :当前item对应的数据类型
-     */
+    //绑定数据的方法(abstract)
     public abstract void bingData(BaseViewHolder holder, T t);
 
     //创建基类的ViewHolder
@@ -97,12 +97,12 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         }
     }
 
-    //定义回调接口
+    //定义一个回调接口
     public interface ItemClickHandler {
         void itemClick(int position, BaseViewHolder holder);
     }
 
-    //设置回调接口的监听(给接口设置set()方法)
+    //设置回调接口的监听(即设置set()方法)
     public void setItemClickHandler(ItemClickHandler itemClickHandler) {
         this.itemClickHandler = itemClickHandler;
     }

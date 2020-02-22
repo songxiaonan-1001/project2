@@ -8,7 +8,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecttwo.R;
@@ -20,6 +22,7 @@ import com.example.projecttwo.presenter.home.HomePresenter;
 import com.example.projecttwo.ui.home.activity.BrandActivity;
 import com.example.projecttwo.ui.home.adapter.BrandAdapter;
 import com.example.projecttwo.ui.home.adapter.GlideImageLoader;
+import com.example.projecttwo.ui.home.adapter.HotGoodsAdapter;
 import com.example.projecttwo.ui.home.adapter.NewGoodsListAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.youth.banner.Banner;
@@ -63,7 +66,7 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
     //适配器
     //private ChannelAdapter channelAdapter;
     private NewGoodsListAdapter newGoodsListAdapter;
-    //private HotGoodsAdapter hotGoodsListAdapter;
+    private HotGoodsAdapter hotGoodsListAdapter;
     private BrandAdapter brandAdapter;
     //private TopicListAdapter topicListAdapter;
     //private CategoryListAdapter categoryListAdapter;
@@ -82,15 +85,26 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         list_hotGoodsList = new ArrayList<>();//人气推荐
         list_topicList = new ArrayList<>();//专题精选
         list_categoryList = new ArrayList<>();//分类数据:居家,餐厨等
+
         //创建适配器
         brandAdapter = new BrandAdapter(list_brand, context);
         newGoodsListAdapter = new NewGoodsListAdapter(list_newGoodsList, context);
-        //创建并设置网格管理器(brand专题)
+        hotGoodsListAdapter = new HotGoodsAdapter(list_hotGoodsList, context);
+
+        //创建并设置布局管理器
         rec_brand.setLayoutManager(new GridLayoutManager(context, 2));
         rec_newgoods.setLayoutManager(new GridLayoutManager(context, 2));
+        rec_hotgoods.setLayoutManager(new LinearLayoutManager(context));
+
+        //设置间隔线
+        rec_hotgoods.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
+
         //设置适配器
         rec_brand.setAdapter(brandAdapter);
         rec_newgoods.setAdapter(newGoodsListAdapter);
+        rec_hotgoods.setAdapter(hotGoodsListAdapter);
+
+        //点击监听
         brandAdapter.setItemClickHandler(new BrandAdapter.ItemClickHandler() {
             @Override
             public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
@@ -103,11 +117,17 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
                 Toast.makeText(context, "点击了新品栏", Toast.LENGTH_SHORT).show();
             }
         });
+        hotGoodsListAdapter.setItemClickHandler(new BaseAdapter.ItemClickHandler() {
+            @Override
+            public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
+                Toast.makeText(context, "点击了人气栏", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
     protected void initData() {
-        //此处的presenter为BaseFragment中的P层对象
+        //此处的presenter为父类BaseFragment中的P层对象
         presenter.getHomeData();
     }
 
@@ -137,6 +157,8 @@ public class HomeFragment extends BaseFragment<HomeConstract.Presenter> implemen
         brandAdapter.updata(result.getData().getBrandList());
         //刷新新品发布列表数据
         newGoodsListAdapter.updata(result.getData().getNewGoodsList());
+        //刷新人气推荐列表数据
+        hotGoodsListAdapter.updata(result.getData().getHotGoodsList());
 
     }
 
