@@ -34,6 +34,6 @@ public class NewGoodsListAdapter extends BaseAdapter {
 
         Glide.with(mContext).load(data.getList_pic_url()).into(img_newgoods);
         txt_name.setText(data.getName());
-        txt_price.setText(data.getRetail_price());
+        txt_price.setText("¥"+data.getRetail_price());
     }
 }

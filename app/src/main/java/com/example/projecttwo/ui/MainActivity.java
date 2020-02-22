@@ -14,6 +14,7 @@ import com.example.projecttwo.ui.home.HomeFragment;
 import com.example.projecttwo.ui.me.MeFragment;
 import com.example.projecttwo.ui.shopping.ShoppingFragment;
 import com.example.projecttwo.ui.topic.TopicFragment;
+import com.example.projecttwo.utils.NoScrollViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
