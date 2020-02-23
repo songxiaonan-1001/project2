@@ -2,9 +2,7 @@ package com.example.projecttwo.ui.home;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
-import android.widget.HorizontalScrollView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projecttwo.R;
 import com.example.projecttwo.base.BaseAdapter;
 import com.example.projecttwo.base.BaseFragment;
-import com.example.projecttwo.interfaces.home.HomeConstract;
+import com.example.projecttwo.interfaces.HomeConstract;
 import com.example.projecttwo.models.bean.IndexBean;
 import com.example.projecttwo.presenter.home.HomePresenter;
 import com.example.projecttwo.ui.home.activity.BrandActivity;

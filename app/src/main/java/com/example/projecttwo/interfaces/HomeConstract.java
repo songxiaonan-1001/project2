@@ -1,7 +1,5 @@
-package com.example.projecttwo.interfaces.home;
+package com.example.projecttwo.interfaces;
 
-import com.example.projecttwo.interfaces.IBasePresenter;
-import com.example.projecttwo.interfaces.IBaseView;
 import com.example.projecttwo.models.bean.IndexBean;
 
 /**
