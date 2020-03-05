@@ -18,9 +18,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@id/sort_layout_left"
         app:layout_constraintTop_toTopOf="parent">
 

@@ -37,6 +37,7 @@ public class HttpManager {
 
     private static volatile HttpManager instance;
 
+    //使用懒汉单例创建对象
     public static HttpManager getInstance() {
         if (instance == null) {
             synchronized (HttpManager.class) {
@@ -46,6 +47,11 @@ public class HttpManager {
         return instance;
     }
 
+    /**
+     * 获取retrofit网络请求的类
+     * @param url
+     * @return
+     */
     private static Retrofit getRetrofit(String url) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url)

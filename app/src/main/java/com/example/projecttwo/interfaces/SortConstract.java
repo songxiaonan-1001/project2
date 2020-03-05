@@ -1,6 +1,5 @@
 package com.example.projecttwo.interfaces;
 
-import com.example.projecttwo.models.bean.IndexBean;
 import com.example.projecttwo.models.bean.SortBean;
 import com.example.projecttwo.models.bean.SortGoodsBean;
 

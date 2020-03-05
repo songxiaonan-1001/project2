@@ -39,6 +39,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
             @Override
             public void onClick(View v) {
                 if (itemClickHandler != null) {
+                    //点击跳转详情页
                     itemClickHandler.itemClick(holder.getLayoutPosition(), holder);
                 }
             }
@@ -58,6 +59,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         return mDatas.size();
     }
 
+
     //刷新所有列表数据
     public void updata(List<T> list) {
         mDatas.clear();
@@ -71,11 +73,13 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+
     //获取布局的方法(abstract)
     protected abstract int getLayout();
 
     //绑定数据的方法(abstract)
     public abstract void bingData(BaseViewHolder holder, T t);
+
 
     //创建基类的ViewHolder
     public static class BaseViewHolder extends RecyclerView.ViewHolder {
@@ -96,6 +100,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
             return view;
         }
     }
+
 
     //定义一个回调接口
     public interface ItemClickHandler {

@@ -2,12 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.projecttwo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--获取手机网络状态-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--读取sd卡图片-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!--SD卡缓存图片-->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 获取手机网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读取sd卡图片 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- SD卡缓存图片 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -19,8 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <!--主类-->
+        <activity android:name=".ui.login.LoginActivity"></activity>
+        <activity android:name=".ui.login.RegisterActivity" /> <!-- 主类 -->
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
