@@ -19,7 +19,7 @@ import java.util.List;
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter {
 
     //成员变量
-    ItemClickHandler itemClickHandler;//接口的成员变量
+    protected ItemClickHandler itemClickHandler;//接口的成员变量
     protected List<T> mDatas;
     protected Context mContext;
 

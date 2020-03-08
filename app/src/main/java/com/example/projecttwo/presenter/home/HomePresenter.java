@@ -2,7 +2,7 @@ package com.example.projecttwo.presenter.home;
 
 import com.example.projecttwo.base.BasePresenter;
 import com.example.projecttwo.common.CommonSubscriber;
-import com.example.projecttwo.interfaces.HomeConstract;
+import com.example.projecttwo.interfaces.home.HomeConstract;
 import com.example.projecttwo.models.HttpManager;
 import com.example.projecttwo.models.bean.IndexBean;
 import com.example.projecttwo.utils.RxUtils;

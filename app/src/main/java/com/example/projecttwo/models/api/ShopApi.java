@@ -1,7 +1,12 @@
 package com.example.projecttwo.models.api;
 
 import com.example.projecttwo.models.bean.BrandBean;
+import com.example.projecttwo.models.bean.CartBean;
+import com.example.projecttwo.models.bean.CartGoodsCheckBean;
+import com.example.projecttwo.models.bean.CartGoodsDeleteBean;
+import com.example.projecttwo.models.bean.CartGoodsUpdateBean;
 import com.example.projecttwo.models.bean.IndexBean;
+import com.example.projecttwo.models.bean.RelatedBean;
 import com.example.projecttwo.models.bean.SortBean;
 import com.example.projecttwo.models.bean.SortGoodsBean;
 import com.example.projecttwo.models.bean.UserBean;
@@ -31,7 +36,7 @@ public interface ShopApi {
 
     //获取分类的接口
     @GET("catalog/index")
-    Flowable<SortBean> getSort();
+    Flowable<SortBean> getSortData();
 
     //获取分类页面的商品数据
     @GET("catalog/current")
@@ -46,8 +51,8 @@ public interface ShopApi {
     //Flowable<SortDetailGoodsBean> getSortDetailGoods(@Query("categoryId") int id,@Query("page") int page,@Query("size") int size);
 
     //商品购买页面的数据接口
-    //@GET("goods/detail")
-    //Flowable<RelatedBean> getRelatedData(@Query("id") int id);
+    @GET("goods/detail")
+    Flowable<RelatedBean> getRelatedData(@Query("id") int id);
 
     //验证码
     @GET("auth/verify")
@@ -58,24 +63,23 @@ public interface ShopApi {
     @FormUrlEncoded
     Flowable<UserBean> login(@Field("nickname") String nickname, @Field("password") String password);
 
-
     //获取购物车的数据
-    //@GET("cart/index")
-    //Flowable<CartBean> getCartIndex();
+    @GET("cart/index")
+    Flowable<CartBean> getCartIndex();
 
     //购物车商品数据的选中或取消
-    //@POST("cart/checked")
-    //@FormUrlEncoded
-    //Flowable<CartGoodsCheckBean> setCartGoodsCheck(@Field("productIds") String pids, @Field("isChecked") int isChecked);
+    @POST("cart/checked")
+    @FormUrlEncoded
+    Flowable<CartGoodsCheckBean> setCartGoodsCheck(@Field("productIds") String pids, @Field("isChecked") int isChecked);
 
     //更新商品的数据
-    //@POST("cart/update")
-    //@FormUrlEncoded
-    //Flowable<CartGoodsUpdateBean> updateCartGoods(@Field("productId") String pids,@Field("goodsId") String goodsId, @Field("number") int number,@Field("id") int id);
+    @POST("cart/update")
+    @FormUrlEncoded
+    Flowable<CartGoodsUpdateBean> updateCartGoods(@Field("productId") String pids, @Field("goodsId") String goodsId, @Field("number") int number, @Field("id") int id);
 
 
     //删除商品
-    //@POST("cart/delete")
-    //@FormUrlEncoded
-    //Flowable<CartGoodsDeleteBean> deleteCartGoods(@Field("productIds") String pids);
+    @POST("cart/delete")
+    @FormUrlEncoded
+    Flowable<CartGoodsDeleteBean> deleteCartGoods(@Field("productIds") String pids);
 }

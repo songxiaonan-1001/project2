@@ -2,7 +2,7 @@ package com.example.projecttwo.presenter.sort;
 
 import com.example.projecttwo.base.BasePresenter;
 import com.example.projecttwo.common.CommonSubscriber;
-import com.example.projecttwo.interfaces.SortConstract;
+import com.example.projecttwo.interfaces.sort.SortConstract;
 import com.example.projecttwo.models.HttpManager;
 import com.example.projecttwo.models.bean.SortBean;
 import com.example.projecttwo.models.bean.SortGoodsBean;

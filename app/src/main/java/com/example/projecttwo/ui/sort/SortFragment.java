@@ -1,19 +1,13 @@
 package com.example.projecttwo.ui.sort;
 
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.projecttwo.R;
 import com.example.projecttwo.base.BaseAdapter;
 import com.example.projecttwo.base.BaseFragment;
-import com.example.projecttwo.interfaces.SortConstract;
+import com.example.projecttwo.interfaces.sort.SortConstract;
 import com.example.projecttwo.models.bean.SortBean;
 import com.example.projecttwo.models.bean.SortGoodsBean;
 import com.example.projecttwo.presenter.sort.SortPresenter;
