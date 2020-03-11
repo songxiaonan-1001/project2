@@ -1,6 +1,6 @@
 package com.example.projecttwo.models.bean;
 
-public class BrandBean {
+public class  BrandBean {
     /**
      * errno : 0
      * errmsg :

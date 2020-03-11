@@ -8,6 +8,8 @@ import com.example.projecttwo.models.bean.CartGoodsUpdateBean;
 import com.example.projecttwo.models.bean.IndexBean;
 import com.example.projecttwo.models.bean.RelatedBean;
 import com.example.projecttwo.models.bean.SortBean;
+import com.example.projecttwo.models.bean.SortDetailGoodsBean;
+import com.example.projecttwo.models.bean.SortDetailTabBean;
 import com.example.projecttwo.models.bean.SortGoodsBean;
 import com.example.projecttwo.models.bean.UserBean;
 import com.example.projecttwo.models.bean.VerifyBean;
@@ -43,12 +45,12 @@ public interface ShopApi {
     Flowable<SortGoodsBean> getCurrentSortData(@Query("id") int id);
 
     //获取分类详情页的tab数据
-    //@GET("goods/category")
-    //Flowable<SortDetailTabBean> getSortDetailTab(@Query("id") int id);
+    @GET("goods/category")
+    Flowable<SortDetailTabBean> getSortDetailTab(@Query("id") int id);
 
     //获取分类详情页的商品列表数据
-    //@GET("goods/list")
-    //Flowable<SortDetailGoodsBean> getSortDetailGoods(@Query("categoryId") int id,@Query("page") int page,@Query("size") int size);
+    @GET("goods/list")
+    Flowable<SortDetailGoodsBean> getSortDetailGoods(@Query("categoryId") int id, @Query("page") int page, @Query("size") int size);
 
     //商品购买页面的数据接口
     @GET("goods/detail")

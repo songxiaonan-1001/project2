@@ -15,7 +15,6 @@ public class RegisterPresenter extends BasePresenter<RegisterConstract.View> imp
                 .getVerify()
                 .compose(RxUtils.<VerifyBean>rxScheduler())
                 .subscribeWith(new CommonSubscriber<VerifyBean>(mView) {
-
                     @Override
                     public void onNext(VerifyBean verifyBean) {
                         mView.getVerifyReturn(verifyBean);

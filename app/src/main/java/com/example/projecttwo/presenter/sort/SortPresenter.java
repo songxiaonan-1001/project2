@@ -8,7 +8,11 @@ import com.example.projecttwo.models.bean.SortBean;
 import com.example.projecttwo.models.bean.SortGoodsBean;
 import com.example.projecttwo.utils.RxUtils;
 
+/**
+ * 分类页面(SortFragment)的P层
+ */
 public class SortPresenter extends BasePresenter<SortConstract.View> implements SortConstract.Presenter {
+
     @Override
     public void getSortData() {
         addSubscribe(HttpManager.getInstance().getShopApi().getSortData()

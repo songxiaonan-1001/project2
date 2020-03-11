@@ -14,5 +14,20 @@
     <string name="newGoods">周一周四·新品首发</string>
     <string name="hotGoods">人气推荐</string>
     <string name="topic_choose">专题精选</string>
-    <string name="price_news_model" >￥$</string>
+    <string name="price_news_model">￥$</string>
+    <string name="css_goods">
+        html,body,p{
+            padding:0px;
+            margin:0px;
+            text-align:center;
+        }
+        img{
+            width:100%;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            margin:auto;
+        }
+    </string>
 </resources>

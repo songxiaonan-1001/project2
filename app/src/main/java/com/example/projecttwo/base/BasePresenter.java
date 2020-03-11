@@ -25,6 +25,7 @@ public abstract class BasePresenter<V extends IBaseView> implements IBasePresent
 
     /**
      * 关联V层
+     *
      * @param view
      */
     @Override
@@ -35,10 +36,11 @@ public abstract class BasePresenter<V extends IBaseView> implements IBasePresent
 
     /**
      * 把当前业务下的网络请求对象添加到compositedisposable
+     *
      * @param disposable
      */
-    public void addSubscribe(Disposable disposable){
-        if (compositeDisposable ==null){
+    public void addSubscribe(Disposable disposable) {
+        if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
         }
         compositeDisposable.add(disposable);
@@ -47,8 +49,10 @@ public abstract class BasePresenter<V extends IBaseView> implements IBasePresent
     /**
      * 在界面关闭的时候移除网络请求对象
      */
-    public void unSubscribe(){
-        compositeDisposable.clear();
+    public void unSubscribe() {
+        if (compositeDisposable != null) {
+            compositeDisposable.clear();
+        }
     }
 
     /**
@@ -56,7 +60,9 @@ public abstract class BasePresenter<V extends IBaseView> implements IBasePresent
      */
     @Override
     public void detachView() {
-        this.mView = null;
+        if (this.mView != null) {
+            this.mView = null;
+        }
         unSubscribe();
     }
 }

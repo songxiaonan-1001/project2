@@ -10,7 +10,8 @@ import com.example.projecttwo.utils.RxUtils;
 public class LoginPresenter extends BasePresenter<LoginConstract.View> implements LoginConstract.Presenter {
     @Override
     public void login(String nickname, String password) {
-        addSubscribe(HttpManager.getInstance().getShopApi().login(nickname,password)
+        addSubscribe(HttpManager.getInstance().getShopApi()
+                .login(nickname,password)
                 .compose(RxUtils.<UserBean>rxScheduler())
                 .subscribeWith(new CommonSubscriber<UserBean>(mView){
 

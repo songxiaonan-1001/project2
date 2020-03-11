@@ -49,6 +49,7 @@ public class HttpManager {
 
     /**
      * 获取retrofit网络请求的类
+     *
      * @param url
      * @return
      */
@@ -62,6 +63,11 @@ public class HttpManager {
         return retrofit;
     }
 
+    /**
+     * 对数据的缓存
+     *
+     * @return
+     */
     private static OkHttpClient getOkhttpclient() {
         File file = new File(Constant.PATH_CACHE);//本地的缓存文件
         Cache cache = new Cache(file, 100 * 1024 * 1024);//100M大小
@@ -89,7 +95,6 @@ public class HttpManager {
     }
 
     static class HeaderInterceptor implements Interceptor {
-
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request().newBuilder()
@@ -144,7 +149,6 @@ public class HttpManager {
             }
         }
     }
-
 
     /**
      * Cookie设置
