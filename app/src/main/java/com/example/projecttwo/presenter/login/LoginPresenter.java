@@ -17,11 +17,12 @@ public class LoginPresenter extends BasePresenter<LoginConstract.View> implement
 
                     @Override
                     public void onNext(UserBean userBean) {
-                        if(userBean.getErrno() == 0){
+                        mView.loginReturn(userBean);
+                        /*if(userBean.getErrno() == 0){
                             mView.loginReturn(userBean);
                         }else{
                             mView.showTips(userBean.getErrmsg());
-                        }
+                        }*/
                     }
                 }));
     }

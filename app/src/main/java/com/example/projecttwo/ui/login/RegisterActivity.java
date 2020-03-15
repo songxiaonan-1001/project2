@@ -16,6 +16,9 @@ import com.example.projecttwo.presenter.login.RegisterPresenter;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+/**
+ * 注册页
+ */
 public class RegisterActivity extends BaseActivity<RegisterConstract.Persenter> implements RegisterConstract.View {
 
     @BindView(R.id.edit_username)
@@ -65,6 +68,7 @@ public class RegisterActivity extends BaseActivity<RegisterConstract.Persenter> 
                 presenter.getVerify();
                 break;
             case R.id.btn_register:
+
                 break;
         }
     }

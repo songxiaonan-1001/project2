@@ -20,6 +20,9 @@ import java.util.List;
 
 import butterknife.BindView;
 
+/**
+ * 商品详情页
+ */
 public class GoodInfoActivity extends BaseActivity<CartConstart.Persenter> implements CartConstart.View {
     @BindView(R.id.txt_title)
     TextView txtTitle;
@@ -91,7 +94,7 @@ public class GoodInfoActivity extends BaseActivity<CartConstart.Persenter> imple
 
     @Override
     public void getRelatedDataReturn(RelatedBean result) {
-        updateBanner(result.getData().getGallery());
+        updateBanner(result.getData().getGallery());//更新banner数据
 
         String price = getResources().getString(R.string.price_news_model).replace("$", String.valueOf(result.getData().getInfo().getRetail_price()));
         updatePrice(result.getData().getInfo().getName(),
@@ -145,6 +148,4 @@ public class GoodInfoActivity extends BaseActivity<CartConstart.Persenter> imple
     private void updateGoodList() {
 
     }
-
-
 }

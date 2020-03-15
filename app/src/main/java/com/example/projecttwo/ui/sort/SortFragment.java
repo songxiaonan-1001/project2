@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,11 +56,10 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
 
     //集合数据
     List<SortBean.DataBean.CategoryListBean> list_sort;//详情页的数据集合
-    List<String> titles;//分类列表标签
+    List<String> titles;//分类tab列表标签
     List<SortGoodsBean.DataBean.CurrentCategoryBean.SubCategoryListBean> goodsList;//分类右边数据
 
-    //适配器
-    SortGoodsAdapter sortGoodsAdapter;
+    SortGoodsAdapter sortGoodsAdapter;//适配器
 
     /**
      * 获取页面的xml布局
@@ -152,11 +152,12 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
         list_sort = result.getData().getCategoryList();
         titles.clear();
         //筛选竖导航的标题数据
-        for (SortBean.DataBean.CategoryListBean item : result.getData().getCategoryList()) {
-            int id = item.getId();
-            titles.add(item.getName());
+        for (SortBean.DataBean.CategoryListBean item : list_sort) {
+            int id = item.getId();//获取id
+            titles.add(item.getName());//获取tab标题内容
         }
         verticalTab.setTabAdapter(tabAdapter);
+
         //更新页面右侧标题数据
         updateInfo(result.getData().getCurrentCategory().getBanner_url(),
                 result.getData().getCurrentCategory().getFront_desc(),
@@ -177,7 +178,7 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
     }
 
     /**
-     * 获取并设置数据(页面右侧图片,标题,副标题)
+     * 更新页面数据(页面右侧图片,标题,副标题)
      * @param imgUrl
      * @param name
      * @param title
@@ -213,7 +214,7 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
         }
     }
 
-    //左边的竖导航未选中的方法
+    //左边的竖导航未选中的方法(不做处理)
     @Override
     public void onTabReselected(TabView tab, int position) {
 
@@ -223,6 +224,7 @@ public class SortFragment extends BaseFragment<SortConstract.Presenter> implemen
     @Override
     public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
         int id = goodsList.get(position).getId();
+        Log.i("tag", "itemClick: 传入"+id);
         //点击进入商品的详情页,同时传入id
         Intent intent = new Intent(context, SortDetailActivity.class);
         intent.putExtra("sortId",id);

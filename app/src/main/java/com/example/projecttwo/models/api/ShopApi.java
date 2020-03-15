@@ -25,6 +25,7 @@ import retrofit2.http.Query;
 
 public interface ShopApi {
 
+    //主页数据接口
     @GET("index")
     Flowable<IndexBean> getIndexData();
 
@@ -36,7 +37,7 @@ public interface ShopApi {
     //@GET("goods/list")
     //Flowable<BrandGoodsBean> getBrandGoods(@Query("brandId") String brandId, @Query("page") int page, @Query("size") int size);
 
-    //获取分类的接口
+    //获取分类导航数据的接口
     @GET("catalog/index")
     Flowable<SortBean> getSortData();
 
@@ -64,6 +65,9 @@ public interface ShopApi {
     @POST("auth/login")
     @FormUrlEncoded
     Flowable<UserBean> login(@Field("nickname") String nickname, @Field("password") String password);
+
+    //注册
+
 
     //获取购物车的数据
     @GET("cart/index")

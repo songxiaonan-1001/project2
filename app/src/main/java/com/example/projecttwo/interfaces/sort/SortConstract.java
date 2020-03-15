@@ -21,10 +21,10 @@ public interface SortConstract {
 
     //P层接口(V层的P层对象调用P层接口的方法,执行P层实现类(SortPresenter)中的方法)
     interface Presenter extends IBasePresenter<View> {
-        //请求数据(页面初始化时调用)
+        //请求数据(页面tab页的数据)
         void getSortData();
 
-        //请求数据(页面后期交互时调用),传入参数id区分不同的数据
+        //请求数据(页面右侧数据),传入参数id区分不同的数据
         void getCurrentSortData(int id);
     }
 

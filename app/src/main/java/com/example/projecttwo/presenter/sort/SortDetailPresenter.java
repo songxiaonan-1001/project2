@@ -17,7 +17,11 @@ public class SortDetailPresenter extends BasePresenter<SortConstract.DetailView>
                 .subscribeWith(new CommonSubscriber<SortDetailTabBean>(mView) {
                     @Override
                     public void onNext(SortDetailTabBean sortDetailTabBean) {
-                        mView.getSortDetailTabReturn(sortDetailTabBean);
+                        if (sortDetailTabBean.getErrno() == 0) {
+                            mView.getSortDetailTabReturn(sortDetailTabBean);
+                        } else {
+                            mView.showTips(sortDetailTabBean.getErrmsg());
+                        }
                     }
                 }));
     }
@@ -30,6 +34,11 @@ public class SortDetailPresenter extends BasePresenter<SortConstract.DetailView>
                     @Override
                     public void onNext(SortDetailGoodsBean sortDetailGoodsBean) {
                         mView.getSortDetailGoodsReturn(sortDetailGoodsBean);
+                       /* if (sortDetailGoodsBean.getErrno() == 0) {
+                            mView.getSortDetailGoodsReturn(sortDetailGoodsBean);
+                        } else {
+                            mView.showTips(sortDetailGoodsBean.getErrmsg());
+                        }*/
                     }
                 }));
     }
